@@ -15,6 +15,7 @@
 
         try {
           if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            alert("Has mediaDevices");
             // Not adding `{ audio: true }` since we only want video now
             navigator.mediaDevices
               .getUserMedia({ video: true })
@@ -26,6 +27,7 @@
               })
               .catch(e => alert(e));
           }
+          alert("not mediaDevices");
         } catch (e) {
           alert(e.message);
         }
