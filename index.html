@@ -26,8 +26,7 @@
                 video.play();
               })
               .catch(e => alert(e));
-          }
-          alert("not mediaDevices");
+          } else alert("not mediaDevices");
         } catch (e) {
           alert(e.message);
         }
