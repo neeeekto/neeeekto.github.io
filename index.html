@@ -1,6 +1,38 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><title>temp2</title><base href="/"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#4e8ef7"/><link rel="manifest" href="manifest.json"/><meta name="mobile-web-app-capable" content="yes"/><link rel="icon" type="image/x-icon" href="favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.jpg"/><link href="/9c392fedb7d0fab047d7f350c00a55e7.css" rel="stylesheet"></head><body><!--[if lt IE 10]>
-  <p>
-    You are using an <strong>outdated</strong> browser.
-    Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-  </p>
-  <![endif]--><noscript><p>This page requires JavaScript to work properly. Please enable JavaScript in your browser.</p></noscript><div id="app"></div><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"><script type="text/javascript" src="/main.f28d061795ab3c2d77ff.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test</title>
+  </head>
+  <body>
+    <video id="video" muted autoplay></video>
+    <script>
+      function run() {
+        var video = document.getElementById("video");
+        alert("Run");
+
+        try {
+          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices
+              .getUserMedia({ video: true })
+              .then(function(stream) {
+                alert(stream.id);
+                //video.src = window.URL.createObjectURL(stream);
+                video.srcObject = stream;
+                video.play();
+              })
+              .catch(e => alert(e));
+          }
+        } catch (e) {
+          alert(e.message);
+        }
+      }
+
+      // Get access to the camera!
+    </script>
+    <button onclick="run()">Run</button>
+  </body>
+</html>
